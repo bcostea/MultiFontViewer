@@ -5,12 +5,16 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using NanoDI;
+using NanoDI.Attributes;
 
 namespace MultiFontViewer
 {
     public partial class RuntimeConfigurationForm : Form
     {
-        private List<String> invalidFields=new List<String>();
+        private List<String> invalidFields = new List<String>();
+
+        RuntimeConfig runtimeConfig = (RuntimeConfig)NanoDI.ApplicationContext.GetComponent("runtimeConfig");
 
         public RuntimeConfigurationForm()
         {
@@ -25,9 +29,9 @@ namespace MultiFontViewer
 
         private void doneButton_Click(object sender, EventArgs e)
         {
-            RuntimeConfig.SampleText = sampleTextBox.Text;
-            RuntimeConfig.SampleSize = int.Parse(sampleSize.Text);
-            RuntimeConfig.EntriesPerPage = int.Parse(fontEntriesPerPageTextBox.Text);
+            runtimeConfig.SampleText = sampleTextBox.Text;
+            runtimeConfig.SampleSize = int.Parse(sampleSize.Text);
+            runtimeConfig.EntriesPerPage = int.Parse(fontEntriesPerPageTextBox.Text);
 
             this.Hide();
             this.Dispose();
@@ -35,22 +39,22 @@ namespace MultiFontViewer
 
         private void SampleTextForm_Load(object sender, EventArgs e)
         {
-            sampleTextBox.Text = RuntimeConfig.SampleText;
-            sampleSize.Text = RuntimeConfig.SampleSize + "";
-            fontEntriesPerPageTextBox.Text = RuntimeConfig.EntriesPerPage + "";
+            sampleTextBox.Text = runtimeConfig.SampleText;
+            sampleSize.Text = runtimeConfig.SampleSize + "";
+            fontEntriesPerPageTextBox.Text = runtimeConfig.EntriesPerPage + "";
         }
 
         private void sampleSize_TextChanged(object sender, EventArgs e)
         {
-             try
+            try
             {
                 int.Parse(sampleSize.Text);
                 validateField(sampleSize);
             }
-             catch (Exception exce)
-             {
-                 invalidateField(sampleSize);
-             }
+            catch (Exception exce)
+            {
+                invalidateField(sampleSize);
+            }
         }
 
 

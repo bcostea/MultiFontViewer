@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
+using NanoDI.Attributes;
 
 namespace MultiFontViewer
 {
@@ -19,6 +20,7 @@ namespace MultiFontViewer
 
         private ListView fontListView;
         private Graphics graphics;
+        RuntimeConfig runtimeConfig = (RuntimeConfig)NanoDI.ApplicationContext.GetComponent("runtimeConfig");
 
         public FontPainter(ListView fontListView, Graphics graphics){
             this.fontListView=fontListView;
@@ -34,7 +36,7 @@ namespace MultiFontViewer
 
         private void iterateFontsAndPaint()
         {
-            string sampleText = RuntimeConfig.SampleText;
+            string sampleText = runtimeConfig.SampleText;
 
             for (int i = minimumIndex; i < maximumIndex; i++)
             {
@@ -48,7 +50,7 @@ namespace MultiFontViewer
         {
 
             FontFamily fontFamily = new FontFamily(fontName);
-            Font font = new Font(fontFamily, RuntimeConfig.SampleSize, FontUtil.getFirstSupportedStyle(fontFamily), GraphicsUnit.Pixel);
+            Font font = new Font(fontFamily, runtimeConfig.SampleSize, FontUtil.getFirstSupportedStyle(fontFamily), GraphicsUnit.Pixel);
             
 
             int x = 200;
@@ -87,7 +89,7 @@ namespace MultiFontViewer
 
         private void initializeVariables()
         {
-            fontsPerPage = RuntimeConfig.EntriesPerPage;
+            fontsPerPage = runtimeConfig.EntriesPerPage;
             numberOfFonts = fontListView.Items.Count;
             calculateSelectedIndex();
             calculateIndexes();

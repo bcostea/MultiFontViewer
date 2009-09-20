@@ -6,11 +6,14 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Drawing.Imaging;
+using NanoDI.Attributes;
 
 namespace MultiFontViewer
 {
-    public partial class multiFontViewerForm : Form, RuntimeConfigUpdateAware
+    public partial class multiFontViewerForm : Form, IRuntimeConfigUpdateAware
     {
+
+        RuntimeConfig runtimeConfig = (RuntimeConfig)NanoDI.ApplicationContext.GetComponent("runtimeConfig");
 
         public multiFontViewerForm()
         {
@@ -25,10 +28,10 @@ namespace MultiFontViewer
 
         private void setupRuntimeConfiguration()
         {
-            RuntimeConfig.SampleText = "Sample text";
-            RuntimeConfig.SampleSize = 40;
-            RuntimeConfig.EntriesPerPage = 10;
-            RuntimeConfig.registerForNotifications(this);
+            runtimeConfig.SampleText = "Sample text";
+            runtimeConfig.SampleSize = 40;
+            runtimeConfig.EntriesPerPage = 10;
+            runtimeConfig.registerForNotifications(this);
         }
 
         private void initializeControls()
@@ -59,15 +62,15 @@ namespace MultiFontViewer
             Font font;
             try
             {
-                font = new Font(fontFamily, RuntimeConfig.SampleSize, RuntimeConfig.SampleFontStyle);
+                font = new Font(fontFamily, runtimeConfig.SampleSize, runtimeConfig.SampleFontStyle);
             }
             catch (Exception exce)
             {
-                font = new Font(fontFamily, RuntimeConfig.SampleSize, FontUtil.getFirstSupportedStyle(fontFamily));    
+                font = new Font(fontFamily, runtimeConfig.SampleSize, FontUtil.getFirstSupportedStyle(fontFamily));    
             }
 
             fontViewRichTextBox.Font = font;
-            fontViewRichTextBox.Text = RuntimeConfig.SampleText;
+            fontViewRichTextBox.Text = runtimeConfig.SampleText;
         }
 
         private void setSampleTextToolStripMenuItem_Click(object sender, EventArgs e)
@@ -110,9 +113,9 @@ namespace MultiFontViewer
         private void boldMenuItem_Click(object sender, EventArgs e)
         {
             if(!boldMenuItem.Checked)
-                RuntimeConfig.SampleFontStyle = RuntimeConfig.SampleFontStyle | FontStyle.Bold;
+                runtimeConfig.SampleFontStyle = runtimeConfig.SampleFontStyle | FontStyle.Bold;
             else
-                RuntimeConfig.SampleFontStyle = RuntimeConfig.SampleFontStyle ^ FontStyle.Bold;
+                runtimeConfig.SampleFontStyle = runtimeConfig.SampleFontStyle ^ FontStyle.Bold;
             
             boldMenuItem.Checked = !boldMenuItem.Checked;
         }
@@ -120,9 +123,9 @@ namespace MultiFontViewer
         private void italicMenuItem_Click(object sender, EventArgs e)
         {
             if (!italicMenuItem.Checked)
-                RuntimeConfig.SampleFontStyle = RuntimeConfig.SampleFontStyle | FontStyle.Italic;
+                runtimeConfig.SampleFontStyle = runtimeConfig.SampleFontStyle | FontStyle.Italic;
             else
-                RuntimeConfig.SampleFontStyle = RuntimeConfig.SampleFontStyle ^ FontStyle.Italic;
+                runtimeConfig.SampleFontStyle = runtimeConfig.SampleFontStyle ^ FontStyle.Italic;
 
             italicMenuItem.Checked = !italicMenuItem.Checked;
         }
@@ -130,9 +133,9 @@ namespace MultiFontViewer
         private void underlineMenuItem_Click(object sender, EventArgs e)
         {
             if (!underlineMenuItem.Checked)
-                RuntimeConfig.SampleFontStyle = RuntimeConfig.SampleFontStyle | FontStyle.Underline;
+                runtimeConfig.SampleFontStyle = runtimeConfig.SampleFontStyle | FontStyle.Underline;
             else
-                RuntimeConfig.SampleFontStyle = RuntimeConfig.SampleFontStyle ^ FontStyle.Underline;
+                runtimeConfig.SampleFontStyle = runtimeConfig.SampleFontStyle ^ FontStyle.Underline;
             
             underlineMenuItem.Checked = !underlineMenuItem.Checked;
         }
@@ -140,9 +143,9 @@ namespace MultiFontViewer
         private void strikethroughMenuItem_Click(object sender, EventArgs e)
         {
             if (!strikethroughMenuItem.Checked)
-                RuntimeConfig.SampleFontStyle = RuntimeConfig.SampleFontStyle | FontStyle.Strikeout;
+                runtimeConfig.SampleFontStyle = runtimeConfig.SampleFontStyle | FontStyle.Strikeout;
             else
-                RuntimeConfig.SampleFontStyle = RuntimeConfig.SampleFontStyle ^ FontStyle.Strikeout;
+                runtimeConfig.SampleFontStyle = runtimeConfig.SampleFontStyle ^ FontStyle.Strikeout;
 
             strikethroughMenuItem.Checked = !strikethroughMenuItem.Checked;
         }

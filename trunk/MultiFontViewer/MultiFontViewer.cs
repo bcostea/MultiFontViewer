@@ -2,45 +2,24 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
+using NanoDI.Attributes;
 
 namespace MultiFontViewer
 {
 
 
-
-    public sealed class RuntimeConfig
+    [Component("runtimeConfig")]
+    class RuntimeConfig
     {
-        private static RuntimeConfig instance = null;
-        static readonly object padlock = new object();
-        private static List<RuntimeConfigUpdateAware> runtimeConfigUpdateAwareRegistrars = new List<RuntimeConfigUpdateAware>();
+        private List<IRuntimeConfigUpdateAware> runtimeConfigUpdateAwareRegistrars = new List<IRuntimeConfigUpdateAware>();
 
-        private static string sampleText;
-        private static int sampleSize;
-        private static int fontEntriesPerPage;
-        private static FontStyle sampleFontStyle;
+        private string sampleText;
+        private int sampleSize;
+        private int fontEntriesPerPage;
+        private FontStyle sampleFontStyle;
 
 
-        public RuntimeConfig()
-        {
-        }
-
-        public static RuntimeConfig Instance
-        {
-            get
-            {
-                lock (padlock)
-                {
-                    if (instance == null)
-                    {
-                        instance = new RuntimeConfig();
-                    }
-                    return instance;
-                }
-            }
-
-        }
-
-        public static FontStyle SampleFontStyle
+        public FontStyle SampleFontStyle
         {
             get
             {
@@ -54,7 +33,7 @@ namespace MultiFontViewer
         }
         
 
-        public static string SampleText
+        public string SampleText
         { 
             get{
                 return sampleText;
@@ -65,7 +44,7 @@ namespace MultiFontViewer
             }
         }
 
-        public static int SampleSize
+        public int SampleSize
         {
             get {
                 return sampleSize;
@@ -76,7 +55,7 @@ namespace MultiFontViewer
             }
         }
 
-        public static int EntriesPerPage
+        public int EntriesPerPage
         {
             get { 
                 return fontEntriesPerPage; 
@@ -88,23 +67,22 @@ namespace MultiFontViewer
             }
         }
 
-        private static void notifyRegistrars()
+        private void notifyRegistrars()
         {
-            foreach(RuntimeConfigUpdateAware configAware in runtimeConfigUpdateAwareRegistrars)
+            foreach(IRuntimeConfigUpdateAware configAware in runtimeConfigUpdateAwareRegistrars)
             {
                 configAware.runtimeConfigurationUpdated();
             }
         }
 
-        public static void registerForNotifications(RuntimeConfigUpdateAware configAware)
+        public void registerForNotifications(IRuntimeConfigUpdateAware configAware)
         {
             runtimeConfigUpdateAwareRegistrars.Add(configAware);
         }
     }
 
-    public interface RuntimeConfigUpdateAware
+    public interface IRuntimeConfigUpdateAware
     {
         void runtimeConfigurationUpdated();
     }
-
 }
