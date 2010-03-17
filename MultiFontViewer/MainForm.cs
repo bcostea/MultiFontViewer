@@ -6,17 +6,24 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Drawing.Imaging;
-using NanoDI.Attributes;
+using Ndi.Attributes;
+using Ndi;
 
 namespace MultiFontViewer
 {
-    public partial class multiFontViewerForm : Form, IRuntimeConfigUpdateAware
+    [Component("mainForm", Scope.Singleton)]
+    public partial class MultiFontViewerForm : Form, IRuntimeConfigUpdateAware
     {
+        
+        RuntimeConfig runtimeConfig;
 
-        RuntimeConfig runtimeConfig = (RuntimeConfig)NanoDI.ApplicationContext.GetComponent("runtimeConfig");
+        [Inject]
+        RuntimeConfigurationForm runtimeConfigForm=null;
 
-        public multiFontViewerForm()
+        [Inject]
+        public MultiFontViewerForm(RuntimeConfig runtimeConfig)
         {
+            this.runtimeConfig = runtimeConfig;
             InitializeComponent();
         }
 
@@ -75,8 +82,7 @@ namespace MultiFontViewer
 
         private void setSampleTextToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RuntimeConfigurationForm sample = new RuntimeConfigurationForm();
-            sample.Show();
+            runtimeConfigForm.Show();
         }
 
         public void runtimeConfigurationUpdated()
@@ -154,7 +160,6 @@ namespace MultiFontViewer
         {
             MessageBox.Show(this, "Multi Font Viewer\n Xander Tools\n http://xandertools.com/utilities\n http://www.gridpulse.com\n\nThis software is released under the GPL.\nVisit the support site for more info.", "About Multi Font Viewer");
         }
-
     }
 
     public class FontItem : System.Windows.Forms.ListViewItem
