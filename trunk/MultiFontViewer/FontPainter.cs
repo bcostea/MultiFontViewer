@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
-using NanoDI.Attributes;
+using Ndi.Attributes;
 
 namespace MultiFontViewer
 {
@@ -20,7 +20,9 @@ namespace MultiFontViewer
 
         private ListView fontListView;
         private Graphics graphics;
-        RuntimeConfig runtimeConfig = (RuntimeConfig)NanoDI.ApplicationContext.GetComponent("runtimeConfig");
+
+
+        RuntimeConfig runtimeConfig = (RuntimeConfig)Ndi.App.Instance.Context.GetComponent("runtimeConfig");
 
         public FontPainter(ListView fontListView, Graphics graphics){
             this.fontListView=fontListView;

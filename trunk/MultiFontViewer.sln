@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual C# Express 2008
+# Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiFontViewer", "MultiFontViewer\MultiFontViewer.csproj", "{7D8F9C65-C8DB-45A1-A57D-B33FFA30A550}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiFontViewer.Test", "MultiFontViewer.Test\MultiFontViewer.Test.csproj", "{9E6FF996-63D1-492A-90A6-01D707066CA3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +15,10 @@ Global
 		{7D8F9C65-C8DB-45A1-A57D-B33FFA30A550}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D8F9C65-C8DB-45A1-A57D-B33FFA30A550}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D8F9C65-C8DB-45A1-A57D-B33FFA30A550}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E6FF996-63D1-492A-90A6-01D707066CA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E6FF996-63D1-492A-90A6-01D707066CA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E6FF996-63D1-492A-90A6-01D707066CA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E6FF996-63D1-492A-90A6-01D707066CA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

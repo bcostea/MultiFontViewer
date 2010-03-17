@@ -5,26 +5,28 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using NanoDI;
-using NanoDI.Attributes;
+using Ndi;
+using Ndi.Attributes;
 
 namespace MultiFontViewer
 {
+    [Component("runtimeConfigForm", Scope.Singleton)]
     public partial class RuntimeConfigurationForm : Form
     {
         private List<String> invalidFields = new List<String>();
 
-        RuntimeConfig runtimeConfig = (RuntimeConfig)NanoDI.ApplicationContext.GetComponent("runtimeConfig");
-
-        public RuntimeConfigurationForm()
+        RuntimeConfig runtimeConfig;
+        
+        [Inject]
+        public RuntimeConfigurationForm(RuntimeConfig runtimeConfig)
         {
+            this.runtimeConfig = runtimeConfig;
             InitializeComponent();
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-            this.Dispose();
         }
 
         private void doneButton_Click(object sender, EventArgs e)
@@ -34,7 +36,6 @@ namespace MultiFontViewer
             runtimeConfig.EntriesPerPage = int.Parse(fontEntriesPerPageTextBox.Text);
 
             this.Hide();
-            this.Dispose();
         }
 
         private void SampleTextForm_Load(object sender, EventArgs e)

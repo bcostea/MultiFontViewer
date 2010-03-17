@@ -1,6 +1,8 @@
-﻿namespace MultiFontViewer
+﻿using Ndi.Attributes;
+namespace MultiFontViewer
 {
-    partial class multiFontViewerForm
+
+    partial class MultiFontViewerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(multiFontViewerForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MultiFontViewerForm));
             this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setSampleTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();

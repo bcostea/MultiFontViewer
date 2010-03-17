@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using Ndi.Attributes;
 using System.Drawing;
-using NanoDI.Attributes;
 
 namespace MultiFontViewer
 {
-
-
     [Component("runtimeConfig")]
-    class RuntimeConfig
+    public class RuntimeConfig
     {
         private List<IRuntimeConfigUpdateAware> runtimeConfigUpdateAwareRegistrars = new List<IRuntimeConfigUpdateAware>();
 
@@ -31,14 +28,16 @@ namespace MultiFontViewer
                 notifyRegistrars();
             }
         }
-        
+
 
         public string SampleText
-        { 
-            get{
+        {
+            get
+            {
                 return sampleText;
             }
-            set{
+            set
+            {
                 sampleText = value;
                 notifyRegistrars();
             }
@@ -46,10 +45,12 @@ namespace MultiFontViewer
 
         public int SampleSize
         {
-            get {
+            get
+            {
                 return sampleSize;
             }
-            set {
+            set
+            {
                 sampleSize = value;
                 notifyRegistrars();
             }
@@ -57,11 +58,13 @@ namespace MultiFontViewer
 
         public int EntriesPerPage
         {
-            get { 
-                return fontEntriesPerPage; 
+            get
+            {
+                return fontEntriesPerPage;
             }
 
-            set {
+            set
+            {
                 fontEntriesPerPage = value;
                 notifyRegistrars();
             }
@@ -69,7 +72,7 @@ namespace MultiFontViewer
 
         private void notifyRegistrars()
         {
-            foreach(IRuntimeConfigUpdateAware configAware in runtimeConfigUpdateAwareRegistrars)
+            foreach (IRuntimeConfigUpdateAware configAware in runtimeConfigUpdateAwareRegistrars)
             {
                 configAware.runtimeConfigurationUpdated();
             }

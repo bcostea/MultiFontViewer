@@ -1,9 +1,8 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <PublishUrlHistory>d:\deploy\multifontviewer\|http://xandertools.com/utilities/multifontviewer/|http://localhost/MultiFontViewer/</PublishUrlHistory>
-    <InstallUrlHistory>http://xandertools.com/content/utilities/multifontviewer/|http://xandertools.com/utilities/multifontviewer/</InstallUrlHistory>
-    <SupportUrlHistory>
-    </SupportUrlHistory>
+    <PublishUrlHistory>C:\deploy\multifontviewer\|d:\deploy\multifontviewer\|http://xandertools.com/utilities/multifontviewer/|http://localhost/MultiFontViewer/</PublishUrlHistory>
+    <InstallUrlHistory>http://www.gridpulse.com/mfv/|http://www.gridpulse.com/content/multi-font-viewer-truetype-font-viewer-for-windows/|http://xandertools.com/content/utilities/multifontviewer/|http://xandertools.com/utilities/multifontviewer/</InstallUrlHistory>
+    <SupportUrlHistory>http://xandertools.com/utilities/multifontviewer</SupportUrlHistory>
     <UpdateUrlHistory>
     </UpdateUrlHistory>
     <BootstrapperUrlHistory>

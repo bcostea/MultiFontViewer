@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{7D8F9C65-C8DB-45A1-A57D-B33FFA30A550}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -15,15 +15,16 @@
     <StartupObject>MultiFontViewer.Program</StartupObject>
     <TargetFrameworkSubset>
     </TargetFrameworkSubset>
-    <ApplicationIcon>multifontviewer.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\multifontviewer.ico</ApplicationIcon>
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <ManifestCertificateThumbprint>06E9BDA7B312A80E7D5021AF83F2F324A8CF9329</ManifestCertificateThumbprint>
     <ManifestKeyFile>MultiFontViewer_TemporaryKey.pfx</ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
     <TargetZone>LocalIntranet</TargetZone>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
-    <SignManifests>true</SignManifests>
-    <PublishUrl>d:\deploy\multifontviewer\</PublishUrl>
+    <SignManifests>false</SignManifests>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <PublishUrl>C:\deploy\multifontviewer\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -33,14 +34,13 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>http://xandertools.com/content/utilities/multifontviewer/</InstallUrl>
-    <SupportUrl>http://xandertools.com/utilities/multifontviewer</SupportUrl>
+    <InstallUrl>http://www.gridpulse.com/mfv/</InstallUrl>
+    <SupportUrl>http://www.gridpulse.com/content/multi-font-viewer-truetype-font-viewer-for-windows</SupportUrl>
     <ProductName>Multi Font Viewer</ProductName>
-    <PublisherName>Xander Tools</PublisherName>
+    <PublisherName>Bogdan Costea</PublisherName>
     <ApplicationRevision>6</ApplicationRevision>
-    <ApplicationVersion>0.1.0.%2a</ApplicationVersion>
+    <ApplicationVersion>0.2.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
-    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -61,9 +61,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NanoDI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Ndi, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\NanoDI.dll</HintPath>
+      <HintPath>lib\Ndi.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -84,11 +84,21 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MultiFontViewer.cs" />
+    <Compile Include="MultiFontViewer.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MultiFontViewer.resx</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MultiFontViewer.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MultiFontViewer.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -97,6 +107,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RuntimeConfigurationForm.resx">
       <DependentUpon>RuntimeConfigurationForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -113,6 +124,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="RuntimeConfig.cs" />
     <Compile Include="RuntimeConfigurationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,14 +133,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="multifontviewer.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework Client Profile</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
       <Visible>False</Visible>
       <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
@@ -144,11 +148,9 @@
       <ProductName>.NET Framework 3.5</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\multifontviewer.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

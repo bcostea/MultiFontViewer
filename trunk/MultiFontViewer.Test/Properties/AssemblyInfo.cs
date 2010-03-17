@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Multi Font Viewer")]
-[assembly: AssemblyDescription("Lite font viewer")]
+[assembly: AssemblyTitle("MultiFontViewer.Test")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("gridpulse.com")]
-[assembly: AssemblyProduct("Multi Font Viewer")]
-[assembly: AssemblyCopyright("Copyright © 2009-2010 Bogdan Costea ")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("MultiFontViewer.Test")]
+[assembly: AssemblyCopyright("Copyright ©  2009")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("2ddc3f7c-b810-4897-8da5-ce2f77927ae1")]
+[assembly: Guid("d71dbdcf-9624-4b58-8865-e29eb183874c")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.2")]
-[assembly: AssemblyFileVersion("1.1.0.0")]
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]
