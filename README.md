@@ -1,7 +1,7 @@
 multifontviewer
 ===============
 
-Lite TTF font viewer for Windows.
+Lite TTF font viewer for Windows I built in 2009 for fun and out of a whim.
 
 I needed to find a font that I used in a logo. Having a lot of fonts installed made it a nightmare.
 
