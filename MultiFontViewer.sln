@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiFontViewer", "MultiFontViewer\MultiFontViewer.csproj", "{7D8F9C65-C8DB-45A1-A57D-B33FFA30A550}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiFontViewer.Test", "MultiFontViewer.Test\MultiFontViewer.Test.csproj", "{9E6FF996-63D1-492A-90A6-01D707066CA3}"
